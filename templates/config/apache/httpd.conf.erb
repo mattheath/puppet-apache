@@ -498,3 +498,5 @@ SSLRandomSeed connect builtin
 </IfModule>
 
 Include /private/etc/apache2/other/*.conf
+
+Include <%= scope.lookupvar "apache::config::sitesdir" %>/*.conf
