@@ -126,8 +126,8 @@ LoadModule rewrite_module libexec/apache2/mod_rewrite.so
 # It is usually good practice to create a dedicated user and group for
 # running httpd, as with most system services.
 #
-User _www
-Group _www
+User <%= scope.lookupvar "::boxen_user" %>
+Group staff
 
 </IfModule>
 </IfModule>
