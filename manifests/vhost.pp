@@ -1,22 +1,31 @@
-# A Boxen-focused project setup helper
+# A Boxen-focused Apache Vhost setup helper
 #
 # Options:
 #
-#     dir =>
-#       The directory to clone the project to.
+#     docroot =>
+#       The directory to use as the document root.
 #       Defaults to "${boxen::config::srcdir}/${name}".
 #
-#     dotenv =>
+#     port =>
+#       Port for Apache to listen on. REQUIRED.
+#
 
-
-
-
-define apache::vhost() {
+define apache::vhost(
+  $port,
+  $docroot  = undef,
+  $host = undef,
+) {
   require apache
 
-  $docroot = "${boxen::config::srcdir}/${name}/web"
-  $hostname = "${name}.dev"
-  $port = 4053
+  $vhost_docroot = $docroot ? {
+    undef   => "${boxen::config::srcdir}/${name}",
+    default => $docroot
+  }
+
+  $hostname = $host ? {
+    undef   => "${name}.dev",
+    default => $host
+  }
 
   file { "${apache::config::sitesdir}/${name}.conf":
     content => template('apache/config/apache/vhost.conf.erb'),

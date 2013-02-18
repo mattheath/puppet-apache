@@ -5,7 +5,7 @@ Listen <%= @port %>
 #
 NameVirtualHost *:<%= @port %>
 
-<Directory <%= @docroot %>>
+<Directory <%= @vhost_docroot %>>
     AllowOverride ALL
     Order Allow,Deny
     Allow from all
@@ -13,7 +13,7 @@ NameVirtualHost *:<%= @port %>
 
 <VirtualHost *:<%= @port %>>
     ServerAdmin webmaster@dummy-host.example.com
-    DocumentRoot "<%= @docroot %>"
+    DocumentRoot "<%= @vhost_docroot %>"
     ServerName <%= @hostname %>
     ErrorLog "<%= scope.lookupvar "apache::config::logdir" %>/<%= @name %>-error_log"
     CustomLog "<%= scope.lookupvar "apache::config::logdir" %>/<%= @name %>-access_log" common
