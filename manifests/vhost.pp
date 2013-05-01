@@ -15,6 +15,7 @@ define apache::vhost(
   $docroot  = undef,
   $host = undef,
 ) {
+  include apache
 
   $vhost_docroot = $docroot ? {
     undef   => "${boxen::config::srcdir}/${name}",
