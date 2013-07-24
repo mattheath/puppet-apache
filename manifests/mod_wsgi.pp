@@ -22,7 +22,8 @@ class apache::mod_wsgi {
   }
 
   # Add config file to load module
-  # <%= scope.lookup() %>/mod_wsgi.so
+
+  $module_path = "${homebrew::config::installdir}/Cellar/mod_wsgi/3.4/libexec/mod_wsgi.so"
 
   file { "${apache::config::configdir}/other/mod_wsgi.conf":
     content => template('apache/config/apache/mod_wsgi.conf.erb'),
