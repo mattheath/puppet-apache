@@ -7,7 +7,8 @@ class apache::config {
   $sitesdir   = "${configdir}/sites"
 
   $executable = "/usr/sbin/httpd"
-  $logdir     = "/var/log/apache2"
+
+  $logdir     = "${boxen::config::logdir}/apache"
   $logerror   = "${logdir}/error.log"
 
 }
