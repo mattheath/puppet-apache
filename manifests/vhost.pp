@@ -15,7 +15,7 @@ define apache::vhost(
   $docroot  = undef,
   $host = undef,
 ) {
-  require apache
+  include apache
 
   $vhost_docroot = $docroot ? {
     undef   => "${boxen::config::srcdir}/${name}",
@@ -30,7 +30,7 @@ define apache::vhost(
   file { "${apache::config::sitesdir}/${name}.conf":
     content => template('apache/config/apache/vhost.conf.erb'),
     require => File[$apache::config::sitesdir],
-    #notify  => Service['org.apache.httpd'],
+    notify  => Service['org.apache.httpd'],
   }
 
 }
