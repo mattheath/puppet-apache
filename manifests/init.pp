@@ -49,4 +49,9 @@ class apache {
     notify  => Service['dev.nginx'],
   }
 
+  apache::vhost { 'apache':
+    docroot  => "${boxen::config::datadir}/apache",
+    port     => $apache::config::port,
+  }
+
 }
