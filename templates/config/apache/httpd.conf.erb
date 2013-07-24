@@ -350,6 +350,20 @@ LogLevel warn
 </Directory>
 
 #
+# Enables mod_info which provides a comprehensive overview of the server configuration
+# Available at /server-info on all vhosts
+#
+<IfModule info_module>
+
+    <Location /server-info>
+        SetHandler server-info
+        Order allow,deny
+        Allow from 127.0.0.1
+    </Location>
+
+</IfModule>
+
+#
 # DefaultType: the default MIME type the server will use for a document
 # if it cannot otherwise determine one, such as from filename extensions.
 # If your server contains mostly text or HTML documents, "text/plain" is
