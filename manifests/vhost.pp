@@ -33,6 +33,4 @@ define apache::vhost(
     #notify  => Service['org.apache.httpd'],
   }
 
-
-
 }
