@@ -2,6 +2,7 @@
 
 class apache::mod_wsgi {
 
+  include apache
   include apache::config
   include homebrew
 
@@ -32,7 +33,5 @@ class apache::mod_wsgi {
     mode    => 0644,
     notify  => Service['org.apache.httpd'],
   }
-
-
 
 }
