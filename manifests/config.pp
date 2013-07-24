@@ -1,5 +1,6 @@
 class apache::config {
-  require boxen::config
+
+  include boxen::config
 
   $configdir  = "/etc/apache2"
   $configfile = "${configdir}/httpd.conf"
@@ -8,4 +9,5 @@ class apache::config {
   $executable = "/usr/sbin/httpd"
   $logdir     = "/var/log/apache2"
   $logerror   = "${logdir}/error.log"
+
 }

@@ -1,6 +1,6 @@
 class apache {
-  require apache::config
-  require homebrew
+
+  include apache::config
 
   # Bring default plist under our control - taken from Mountain Lion 10.8.2
 
