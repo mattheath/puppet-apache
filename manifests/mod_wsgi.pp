@@ -5,6 +5,7 @@ class apache::mod_wsgi {
   include apache
   include apache::config
   include homebrew
+  include python
 
   # First fix a missing link which breaks compilation
   # See here for more info: https://github.com/Homebrew/homebrew-apache#troubleshooting
@@ -19,7 +20,8 @@ class apache::mod_wsgi {
   }
 
   package { 'boxen/brews/mod_wsgi':
-    ensure => '3.4',
+    ensure  => '3.4',
+    require => Class['python']
   }
 
   # Add config file to load module
