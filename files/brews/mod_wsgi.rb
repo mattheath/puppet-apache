@@ -14,7 +14,7 @@ class ModWsgi < Formula
     # causes apxs to fail with "unknown flags" error
     ENV.remove 'CPPFLAGS', "-isystem #{HOMEBREW_PREFIX}/include"
 
-    system "./configure", "--prefix=#{prefix}", "--disable-debug", "--disable-dependency-tracking"
+    system "./configure", "--prefix=#{prefix}", "--disable-debug", "--disable-dependency-tracking", "--with-python=#{HOMEBREW_PREFIX}/bin/python"
 
     # We need apxs to specify the right compiler to its libtool, but
     # doing so causes libtool to die unless this flag is also set
